@@ -1,0 +1,21 @@
+close all;clear all;clc;
+fs=400;
+t1=0.04;t2=0.32;t3=0.33;
+%（1）采样时间为0.04s
+tn=0:(1/fs):(t1-1/fs);N=length(tn);
+xn=cos(200*pi*tn)+sin(100*pi*tn);
+y=fft(xn);
+k=0:(fs/N):fs-fs/N;%频域定标,步长可以是fs/N,也可是1/T延拓,它们的物理本质是一样的
+subplot(311);stem(k,abs(y));title('t=0.04s');
+%（2）采样时间为0.32s
+tn=0:(1/fs):(t2-1/fs);N=length(tn);
+xn=cos(200*pi*tn)+sin(100*pi*tn);
+y=fft(xn);
+k=0:(fs/N):fs-fs/N;
+subplot(312);stem(k,abs(y));title('t=0.32s');
+%（3）采样时间为0.33s
+tn=0:(1/fs):(t3-1/fs);N=length(tn);
+xn=cos(200*pi*tn)+sin(100*pi*tn);
+y=fft(xn);
+k=0:(fs/N):fs-fs/N;
+subplot(313);stem(k,abs(y));title('t=0.33s');
